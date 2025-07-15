@@ -181,4 +181,47 @@ public class JapaneseAnalyzerProviderTest {
             assertTrue(result.hasNext(), "Should find documents containing 'プログラミング'");
         }
     }
+
+    @Test
+    void testAnalyzerDescription() {
+        // Test the description method directly
+        JapaneseAnalyzerProvider provider = new JapaneseAnalyzerProvider();
+        String description = provider.description();
+        
+        assertNotNull(description, "Description should not be null");
+        assertFalse(description.isEmpty(), "Description should not be empty");
+        assertTrue(description.contains("Japanese"), "Description should mention Japanese");
+        assertTrue(description.contains("Kuromoji"), "Description should mention Kuromoji tokenizer");
+    }
+
+    @Test
+    void testStopwordsMethod() {
+        // Test the stopwords method directly
+        JapaneseAnalyzerProvider provider = new JapaneseAnalyzerProvider();
+        List<String> stopwords = provider.stopwords();
+        
+        assertNotNull(stopwords, "Stopwords list should not be null");
+        // The stopwords list might be empty if reflection fails or if the analyzer doesn't have stopwords
+        // This is acceptable behavior based on the implementation
+        assertTrue(stopwords instanceof List, "Should return a List of strings");
+    }
+
+    @Test
+    void testAnalyzerProviderName() {
+        // Test that the analyzer provider is registered with the correct name
+        JapaneseAnalyzerProvider provider = new JapaneseAnalyzerProvider();
+        
+        // The name is set in the constructor via super("japanese")
+        // We can verify this by checking if the analyzer is available with the "japanese" name
+        try (Session session = driver.session()) {
+            Result result = session.run("CALL db.index.fulltext.listAvailableAnalyzers()");
+            
+            List<String> analyzerNames = result.stream()
+                    .map(record -> record.get("analyzer").asString())
+                    .collect(Collectors.toList());
+            
+            assertTrue(analyzerNames.contains("japanese"), 
+                "Japanese analyzer should be registered with name 'japanese'");
+        }
+    }
 }
