@@ -172,11 +172,11 @@ The Japanese analyzer applies the following processing pipeline:
 
 ## Dependencies
 
-- Neo4j 5.28.0 (provided)
+- Neo4j 2025.06.0 (provided)
 - Apache Lucene Kuromoji Analyzer 9.11.1
 - Apache Lucene Analysis Common 9.11.1
 - JUnit 5.10.1 (test)
-- Neo4j Test Harness 5.28.0 (test)
+- Neo4j Test Harness 5.28.7 (test)
 
 ## Contributing
 
@@ -206,8 +206,8 @@ If the `japanese` analyzer doesn't appear in the list:
 
 If you encounter build issues:
 
-1. Ensure Java 17+ is installed
-2. Verify Maven 3.6+ is available
+1. Ensure Java 21+ is installed
+2. Verify Maven 3.9+ is available
 3. Check internet connectivity for dependency downloads
 4. Clear Maven cache: `mvn dependency:purge-local-repository`
 
