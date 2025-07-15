@@ -1,0 +1,2 @@
+# This file ensures the .m2 directory is tracked by Git
+# The .m2 directory is used by Maven for local repository caching
