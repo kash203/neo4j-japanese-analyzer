@@ -7,13 +7,10 @@ import org.apache.lucene.analysis.core.StopFilterFactory;
 import org.apache.lucene.analysis.ja.JapaneseTokenizerFactory;
 import org.neo4j.graphdb.schema.AnalyzerProvider;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 /**
  * Japanese Analyzer Provider for Neo4j using Kuromoji tokenizer.

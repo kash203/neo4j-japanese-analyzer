@@ -209,7 +209,7 @@ public class JapaneseAnalyzerProviderTest {
     @Test
     void testAnalyzerProviderName() {
         // Test that the analyzer provider is registered with the correct name
-        JapaneseAnalyzerProvider provider = new JapaneseAnalyzerProvider();
+        // JapaneseAnalyzerProvider provider = new JapaneseAnalyzerProvider();
         
         // The name is set in the constructor via super("japanese")
         // We can verify this by checking if the analyzer is available with the "japanese" name
